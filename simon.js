@@ -1,5 +1,6 @@
 let gameSeq=[];
 let userSeq=[];
+let score=[];
 
 let btns=["yellow", "red", "purple", "green"];
 
@@ -42,6 +43,8 @@ function levelUp(){
     gameSeq.push(randClr);
     console.log(gameSeq);   
     gameFlash(randbtn);
+    score.push(level);
+    
 }
 
 function checkAns(idx){
@@ -75,9 +78,15 @@ for(btn of allBtns){
     btn.addEventListener("click", btnPress);
 }
 
+function getHighScore(){
+    return Math.max(...score);
+}
+
 function reset(){
     started=false;
     level=0;
     gameSeq=[];
     userSeq=[];
+    h2.innerHTML= `High Score: <b>${getHighScore()}</b><br>Press any key to start.`;
 }
+
